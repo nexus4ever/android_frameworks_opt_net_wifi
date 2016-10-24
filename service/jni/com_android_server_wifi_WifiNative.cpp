@@ -2150,7 +2150,8 @@ static void onPnoNetworkFound(wifi_request_id id,
         }
 
         helper.setObjectArrayElement(scanResults, i, scanResult);
-        helper.setIntArrayRegion(beaconCaps, i, 1, (jint *)&(results[i].capability));
+        helper.setIntArrayRegion(beaconCaps, i, 1, (jint *) (intptr_t) results[i].capability);
+
 
         if (DBG) {
             ALOGD("ScanResult: IE length %d, i %u, <%s> rssi=%d %02x:%02x:%02x:%02x:%02x:%02x",
